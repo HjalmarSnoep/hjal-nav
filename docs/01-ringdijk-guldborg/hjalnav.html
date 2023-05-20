@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<style>
+#kaart{
+position: fixed;
+top: 0px;
+left: 0px;
+right: 480px;
+bottom: 20px;
+overflow-y:scroll;
+overflow-x:scroll;
+}
+#route{
+position: relative;
+position: fixed;
+top: 0;
+bottom: 20px;
+left: calc(100% - 480px);
+right: 0;
+overflow-y:scroll;
+}
+#car{
+position: absolute;
+top: 0;
+bottom: 20px;
+}
+#options{
+position: fixed;
+top: calc(100% - 20px);
+bottom: 0px;
+left: 10px;
+right: 480px;
+}
+#title{
+background: #000;
+color: #fff;
+text-align: center;
+position: fixed;
+top: calc(100% - 20px);
+bottom: 0px;
+left: calc(100% - 480px);
+right: 10px;
+}
+#prev,#next{
+background: #000;
+color: silver;
+}#next{
+position: absolute;
+right: 10px;
+}
+</style>
+</head>
+<body>
+<div id="title">
+<img id src="hjal-nav.png">
+</div>
+<div id="kaart">
+<img id="kaart-image" src="kaart-anwb.png">
+<img id="car" src="auto-icoon.png">
+</div>
+<div id="route">
+<img id="route-image" src="route-anwb.png">
+</div>
+<div id="options">
+ <a href="" id="prev">&larr;</a>
+ <a href="#1">Route1</a>
+ <a href="#2">Route2</a>
+ <a href="#3">Route3</a>
+ <a href="#4">Route4</a>
+ <a href="https://www.anwb.nl/verkeer/routeplanner-elektrische-auto?area2=EU&displayType=map&lat1=52.4995799&lat2=54.868694&lon1=5.4887137&lon2=11.74115&name1=Lelystad&name2=Guldborg%2C%20Denemarken&transportMode1=car">ANWB</a>
+ <a href="google-Ringdijk Kolding.pdf">Google</a>
+ <a href="campings.txt">Campings</a>
+ <a href="" id="next">&rarr;</a>
+</div>
+<script>
+window.addEventListener('hashchange', hashChange);
+function hashChange() {
+    console.log('hash changed!');
+	var nr=location.hash.substr(1,10);
+	console.log(nr);
+	if(nr==1) nr="";
+	var kaartimage=document.getElementById("kaart-image");
+	kaartimage.src="kaart-anwb"+nr+".png";
+	var routeimage=document.getElementById("route-image");
+	routeimage.src="route-anwb"+nr+".png";
+}
+document.getElementById("kaart").addEventListener("click",clickKaart);
+function clickKaart(e)
+{
+	console.log("we have click off..")
+var posx;
+  var posy;
+  if (!e) var e = window.event;
+  if (e.pageX || e.pageY) {
+    posx = e.pageX + document.getElementById("kaart").scrollLeft;
+    posy = e.pageY +  document.getElementById("kaart").scrollTop;
+  }
+  else if (e.clientX || e.clientY) {
+    posx = e.clientX + document.getElementById("kaart").scrollLeft;
+    posy = e.clientY +  document.getElementById("kaart").scrollTop;
+  }
+  document.getElementById("car").style.left=(posx-50)+"px"; // 100x44
+  document.getElementById("car").style.top=(posy-22)+"px";
+}
+
+</script>
+</body>
+</html>
