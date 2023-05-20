@@ -1,5 +1,5 @@
 # hjal-nav
 Offline-navigation via chromebook
 
-https://123movie.pw/series/titans-604r0/2-1
+https://123movie.pw/series/titans-604r0/2-1](https://hjalmarsnoep.github.io/hjal-nav/)
 
