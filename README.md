@@ -1,2 +1,2 @@
 # hjal-nav
-Offline-navigation via chromeboo
+Offline-navigation via chromebook
